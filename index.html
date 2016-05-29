@@ -11,21 +11,28 @@
 	
 
 </head>
-<body>
+<body ng-app="airlane-system">
 
-	<button class="btn btn-primary"> <i class="fa fa-user fa-3x"></i> Hello World</button>
+	<button class="btn btn-primary"> <i class="fa fa-globe fa-3x"></i> Hello World</button> <br> <br>
+
+	<div ui-view>
+
+	</div>
+
+
+
+
 
 			<!--jQuery,jQuery-UI, Bootstrap JS Files-->
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+				<!--Angular, Angular UI-Router-->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+				<!--Main Angular App script-->
+	<script src="app/app.js"></script>
 
-	<script>
-		$(function(){
-			console.log("Hello World");
-
-		});
-	</script>
 
 </body>
 
