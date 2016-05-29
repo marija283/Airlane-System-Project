@@ -1,0 +1,24 @@
+{
+  "name": "AirlaneProject",
+  "description": "Bootstrap Project",
+  "main": "index.html",
+  "moduleType": [],
+  "authors": [
+    "Riste Poposki",
+    "Marija Todorova",
+    "Igor Nikolov",
+    "Ognen Americano"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4"
+  }
+}
