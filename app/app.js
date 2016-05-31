@@ -51,12 +51,25 @@ AirlaneSystem
             });
 
 
-            //raboti samo za Destinaton FROM
-        $scope.changeMap = function(){
+        $scope.changeMap = function(id){
+            var LatLng={};
+            var state="";
+            var label="";
+            var title="";
 
-            var LatLng = {};
-            var state = $scope.reservation.destinationFrom;
-
+            if(id==0){
+                LatLng = {};
+                state = $scope.reservation.destinationFrom;
+                label="A";
+                title="Flying From";
+            }
+            else if(id==1)
+            {
+                LatLng = {};
+                state = $scope.reservation.destinationTo;
+                label="B";
+                title="Flying To";
+            }
 
             angular.forEach($scope.database, function(item,index){
                 if(item.state == state){
@@ -66,17 +79,13 @@ AirlaneSystem
                 }
             });
 
-            console.log(LatLng);
+            //console.log(LatLng);
 
             if(LatLng.lat == null){
-                removeMarkers();
+                removeMarkerAt(id);
             }
             else{
-
-                var geocoder = new google.maps.Geocoder;
-                var infowindow = new google.maps.InfoWindow;
-
-                geocodeLatLng(geocoder, map, infowindow, LatLng);
+                changeMarker(LatLng,state,label,title,id);
             }
 
         }

@@ -5,14 +5,14 @@
     <br>
     <br>
 
-    From: <input type="text" ng-model="reservation.destinationFrom" id="destinationFromInput"><br>
-    To: <input type="text" ng-model="reservation.destinationTo"> <br>
-    <button class="btn btn-success" ng-click="changeMap()"> Search</button>
+    From: <input type="text" ng-model="reservation.destinationFrom" id="destinationFromInput" ng-blur="changeMap(0)"><br>
+    To: <input type="text" ng-model="reservation.destinationTo" ng-blur="changeMap(1)"> <br>
+
 </div>
 
 
 
-<div id="map" style="height:500px; width:100%; "></div>
+<div id="map" style="height:500px; width:900px; margin-left:100px;"></div>
 <script>
     var map;
     function initMap() {
@@ -39,8 +39,8 @@
         });
     }
 
-    var allMarkers = [];
-    var allStates = [];
+    var allMarkers= [null,null];
+    var allStates = ["",""];
     var counter = 0;
     var labelsObj = {};
 
@@ -49,7 +49,7 @@
         geocoder.geocode({'location': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
-                    map.setZoom(5);
+                    map.setZoom(4);
 
                     counterAndLabels();
 
@@ -64,8 +64,8 @@
                         title: labelsObj.title
                     });
 
-                    allMarkers.push(marker);
-                    allStates.push(state);
+                    allMarkers[labelsObj.position] = marker;
+                    allStates[labelsObj.position] = state;
 
                     connectWithAngularScope();
 
@@ -90,16 +90,20 @@
 
         if(counter==0){
             counter++;
+            removeMarkerAt(0);
             labelsObj = {
                 label:"A",
-                title:"Flying from"
+                title:"Flying from",
+                position:0
             }
         }
         else if(counter==1){
             counter++;
+            removeMarkerAt(1);
             labelsObj = {
                 label:"B",
-                title:"Flying to"
+                title:"Flying to",
+                position:1
             }
         }
     }
@@ -124,8 +128,31 @@
         $(allMarkers).each(function(index,item){
             item.setMap(null);
         });
-        allMarkers=[];
-        allStates = [];
+        allMarkers= [null,null];
+        allStates = ["",""];
+
+    }
+
+    function removeMarkerAt(position){
+        if(allMarkers[position] != null)
+            allMarkers[position].setMap(null);
+        allStates[position]="";
+    }
+
+    function changeMarker(latlng , state, label,title,id){
+
+        removeMarkerAt(id);
+
+        allMarkers[id] = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            label:label,
+            animation: google.maps.Animation.DROP,
+            title: title
+        });
+
+        allStates[id] = state;
+
     }
 
     function connectWithAngularScope(){
