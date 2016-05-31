@@ -6,13 +6,16 @@
 
 
 
-<div id="map" style="height:100%;"></div>
+<div id="map" style="height:500px; width:100%; "></div>
 <script>
     var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+            center: {
+                lat: 37.99616,
+                lng: -97.910
+            },
+            zoom: 4
         });
 
         var geocoder = new google.maps.Geocoder;
@@ -20,41 +23,98 @@
 
         google.maps.event.addListener(map, 'click', function(event) {
 
-
-            marker = new google.maps.Marker({
-                position: event.latLng,
-                map: map,
-                title: 'Click to zoom'
-            });
+            var latlng = {
+                lat: event.latLng.lat(),
+                lng: event.latLng.lng()
+            };
             //console.log(event.latLng.lat(),event.latLng.lng());
-            geocodeLatLng(geocoder, map, infowindow, event.latLng.lat(),event.latLng.lng());
+            geocodeLatLng(geocoder, map, infowindow, latlng);
 
         });
     }
 
+    var allMarkers = [];
+    var counter = 0;
+    var labelsObj = {};
 
+    function geocodeLatLng(geocoder, map, infowindow, latlng) {
 
-    function geocodeLatLng(geocoder, map, infowindow,lat,lng) {
-
-        var latlng = {lat: lat, lng:lng};
         geocoder.geocode({'location': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
-                    map.setZoom(11);
+                    map.setZoom(5);
+
+                    counterAndLabels();
+
                     var marker = new google.maps.Marker({
                         position: latlng,
-                        map: map
+                        map: map,
+                        label:labelsObj.label,
+                        animation: google.maps.Animation.DROP,
+                        title: labelsObj.title
                     });
-                   console.log(results);
-                    infowindow.setContent(results[1].formatted_address);
+
+                    allMarkers.push(marker);
+
+                    var state = getState(results[1])
+                    //console.log(state);
+
+                    infowindow.setContent(labelsObj.title + ":<br>"+
+                           results[1].formatted_address +
+                            "<br> The state is: <b>" + state + "</b>");
+
                     infowindow.open(map, marker);
                 } else {
-                    window.alert('No results found');
+                    console.log('No results found');
                 }
             } else {
-                window.alert('Geocoder failed due to: ' + status);
+                console.log('Geocoder failed due to: ' + status);
             }
         });
+    }
+
+    function counterAndLabels(){
+        if(counter==2){
+            counter=0;
+            removeMarkers();
+        }
+
+        if(counter==0){
+            counter++;
+            labelsObj = {
+                label:"A",
+                title:"Flying from"
+            }
+        }
+        else if(counter==1){
+            counter++;
+            labelsObj = {
+                label:"B",
+                title:"Flying to"
+            }
+        }
+    }
+
+    function getState(obj){
+        var arrayForState = obj.address_components;
+        var state="";
+
+        $(arrayForState).each(function(index,element){
+
+            if(element.types[0] == "administrative_area_level_1"){
+                state = element.long_name;
+                return true;  //vaka se izleguva od .each
+            }
+        });
+
+        return state;
+    }
+
+    function removeMarkers(){
+        $(allMarkers).each(function(index,item){
+            item.setMap(null);
+        });
+        allMarkers=[];
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYC4Xe4pOrfaY20H4_g9NEX8xSH21uT3s&callback=initMap"
