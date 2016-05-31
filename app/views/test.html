@@ -2,6 +2,12 @@
     Hello {{test}} <br>
 
     <a ui-sref="home" class="btn btn-primary"> Go Home</a>
+    <br>
+    <br>
+
+    From: <input type="text" ng-model="reservation.destinationFrom" id="destinationFromInput"><br>
+    To: <input type="text" ng-model="reservation.destinationTo"> <br>
+    <button class="btn btn-success" ng-click="changeMap()"> Search</button>
 </div>
 
 
@@ -34,6 +40,7 @@
     }
 
     var allMarkers = [];
+    var allStates = [];
     var counter = 0;
     var labelsObj = {};
 
@@ -46,6 +53,9 @@
 
                     counterAndLabels();
 
+                    var state = getState(results[1]);
+                    //console.log(state);
+
                     var marker = new google.maps.Marker({
                         position: latlng,
                         map: map,
@@ -55,9 +65,9 @@
                     });
 
                     allMarkers.push(marker);
+                    allStates.push(state);
 
-                    var state = getState(results[1])
-                    //console.log(state);
+                    connectWithAngularScope();
 
                     infowindow.setContent(labelsObj.title + ":<br>"+
                            results[1].formatted_address +
@@ -75,7 +85,6 @@
 
     function counterAndLabels(){
         if(counter==2){
-            counter=0;
             removeMarkers();
         }
 
@@ -111,10 +120,16 @@
     }
 
     function removeMarkers(){
+        counter=0;
         $(allMarkers).each(function(index,item){
             item.setMap(null);
         });
         allMarkers=[];
+        allStates = [];
+    }
+
+    function connectWithAngularScope(){
+        angular.element($("#destinationFromInput")).scope().changeModel(allStates);
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYC4Xe4pOrfaY20H4_g9NEX8xSH21uT3s&callback=initMap"
