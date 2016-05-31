@@ -26,5 +26,7 @@ AirlaneSystem
     function($rootScope,$scope,$state){
         $scope.test = "You are in TEST view";
         $scope.home = "You are in HOME view";
+
+
     }]);
 

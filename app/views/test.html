@@ -3,3 +3,59 @@
 
     <a ui-sref="home" class="btn btn-primary"> Go Home</a>
 </div>
+
+
+
+<div id="map" style="height:100%;"></div>
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+        });
+
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+
+        google.maps.event.addListener(map, 'click', function(event) {
+
+
+            marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map,
+                title: 'Click to zoom'
+            });
+            //console.log(event.latLng.lat(),event.latLng.lng());
+            geocodeLatLng(geocoder, map, infowindow, event.latLng.lat(),event.latLng.lng());
+
+        });
+    }
+
+
+
+    function geocodeLatLng(geocoder, map, infowindow,lat,lng) {
+
+        var latlng = {lat: lat, lng:lng};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
+                   console.log(results);
+                    infowindow.setContent(results[1].formatted_address);
+                    infowindow.open(map, marker);
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYC4Xe4pOrfaY20H4_g9NEX8xSH21uT3s&callback=initMap"
+        async defer></script>
