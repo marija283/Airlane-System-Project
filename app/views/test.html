@@ -5,8 +5,30 @@
     <br>
     <br>
 
-    From: <input type="text" ng-model="reservation.destinationFrom" id="destinationFromInput" ng-blur="changeMap(0)"><br>
-    To: <input type="text" ng-model="reservation.destinationTo" ng-blur="changeMap(1)"> <br>
+    <div class="cold-md-6">
+    From: <input
+        type="text"
+        ng-model="reservation.destinationFrom"
+        placeholder="Destination From ?"
+        uib-typeahead="state for state in databaseStates | filter:$viewValue"
+        class="form-control"
+        typeahead-show-hint="true"
+        typeahead-min-length="0"
+        id="destinationFromInput"
+        ng-blur="changeMap(0)">
+    To:  <input
+        type="text"
+        ng-model="reservation.destinationTo"
+        placeholder="Destination To ?"
+        uib-typeahead="state for state in databaseStates | filter:$viewValue"
+        class="form-control"
+        typeahead-show-hint="true"
+        typeahead-min-length="0"
+        ng-blur="changeMap(1)">
+    </div>
+
+
+
 
 </div>
 
