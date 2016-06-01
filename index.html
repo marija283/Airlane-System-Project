@@ -8,18 +8,20 @@
 	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
 
+
+
 	
 
 </head>
 <body ng-app="airlane-system">
+	<div class="container">
+		<button class="btn btn-primary"> <i class="fa fa-globe fa-3x"></i> Hello World</button> <br> <br>
 
-	<button class="btn btn-primary"> <i class="fa fa-globe fa-3x"></i> Hello World</button> <br> <br>
+		<div ui-view>
 
-	<div ui-view>
+		</div>
 
 	</div>
-
-
 
 
 
@@ -27,13 +29,19 @@
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 				<!--Angular, Angular UI-Router-->
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+				<!-- Angular UI-->
+	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 				<!--Main Angular App script-->
 	<script src="app/app.js"></script>
 	<script src="app/controllers/controller.js"></script>
 	<script src="app/services/service.js"></script>
+
 
 
 </body>

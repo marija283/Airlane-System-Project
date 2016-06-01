@@ -7,8 +7,8 @@ AirlaneSystem
             $scope.database=[];
 
             $scope.reservation = {
-                destinationFrom:"struga",
-                destinationTo: "skopje"
+                destinationFrom:"",
+                destinationTo: ""
             };
 
             $scope.changeModel = function(states){
@@ -21,6 +21,11 @@ AirlaneSystem
 
             mapService.getDatabase(function(data){
                 $scope.database = data["airports"];
+                $scope.databaseStates=[];
+
+                angular.forEach($scope.database,function(item,index){
+                    $scope.databaseStates.push(item.state);
+                });
             });
 
 
