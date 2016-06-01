@@ -88,10 +88,15 @@ AirlaneSystem
 
 
             // Form return or one way
-            $scope.makeFalse = function(val, event){
+            $scope.makeFalse = function(val){
                 $scope.isReturn = val;
                 $(".btn").removeClass("active");
-                $(event.target).addClass('active');
+
+                if(val==true)
+                    $("#oneWayBtn").addClass('active');
+                else
+                    $("#returnBtn").addClass('active');
+
             }
 
         }]);

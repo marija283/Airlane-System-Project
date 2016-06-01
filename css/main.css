@@ -27,14 +27,14 @@
 }
 
 .logo-white{
-    background: url(../images/logo-white-words-tilt.png) no-repeat 120% 135%;
+    background: url(../images/WhiteLogo.png) no-repeat 92% 91%;
     transition: all .5s ease;
     -webkit-transition: all .5s ease;
     border-radius: 200px;
 }
 
 .logo-white:hover {
-    background-position: -3% -12%;
+    background-position: 2% 3%;
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
 }
