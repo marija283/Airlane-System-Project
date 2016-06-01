@@ -27,12 +27,13 @@
                                             <input
                                                     type="text"
                                                     ng-model="reservation.destinationFrom"
-                                                    placeholder="Destination From ?"
+                                                    placeholder="Choose starting point, or select on the map"
                                                     uib-typeahead="state for state in databaseStates | filter:$viewValue"
                                                     class="form-control"
                                                     typeahead-show-hint="true"
                                                     typeahead-min-length="0"
                                                     id="destinationFromInput"
+                                                    typeahead-on-select="changeMap(0)"
                                                     ng-blur="changeMap(0)">
                                         </div>
                                     </div>
@@ -42,11 +43,12 @@
                                             <input
                                                     type="text"
                                                     ng-model="reservation.destinationTo"
-                                                    placeholder="Destination To ?"
+                                                    placeholder="Choose destinatin, or select on the map"
                                                     uib-typeahead="state for state in databaseStates | filter:$viewValue"
                                                     class="form-control"
                                                     typeahead-show-hint="true"
                                                     typeahead-min-length="0"
+                                                    typeahead-on-select="changeMap(1)"
                                                     ng-blur="changeMap(1)">
                                         </div>
                                     </div>
@@ -106,10 +108,11 @@
     </header>
 
 
-  <section class="services">
+  <section class="services" id="whyUs">
       <div class="container">
           <div class="text-center">
               <h2 class="why">Why us?</h2>
+              <hr class="hrWhy" >
           </div>
           <br><br>
 

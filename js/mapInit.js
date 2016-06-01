@@ -134,6 +134,8 @@ function changeMarker(latlng , state, label,title,id){
         animation: google.maps.Animation.DROP,
         title: title
     });
+    map.setZoom(4);
+    map.panTo( allMarkers[id].position);
 
     allStates[id] = state;
 
@@ -142,3 +144,5 @@ function changeMarker(latlng , state, label,title,id){
 function connectWithAngularScope(){
     angular.element($("#destinationFromInput")).scope().changeModel(allStates);
 }
+
+
