@@ -1,6 +1,7 @@
 var AirlaneSystem = angular.module('airlane-system',[
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngMaterial'
     ]);
 
 AirlaneSystem

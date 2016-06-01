@@ -1,10 +1,4 @@
-
-    <!--<div class="bg-success">-->
-        <!--Hello {{home}}. <br>-->
-         <!--<a ui-sref="test" class="btn btn-success">Go TEST</a>-->
-    <!--</div>-->
-
-    <style>
+  <style>
         nav a{
             color: white;
         }
@@ -21,37 +15,85 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <form>
-                                    <div class="form-group">
-                                        <label >Flying from</label>
-                                        <input
-                                                type="text"
-                                                ng-model="reservation.destinationFrom"
-                                                placeholder="Destination From ?"
-                                                uib-typeahead="state for state in databaseStates | filter:$viewValue"
-                                                class="form-control"
-                                                typeahead-show-hint="true"
-                                                typeahead-min-length="0"
-                                                id="destinationFromInput"
-                                                ng-blur="changeMap(0)">
+                                    <div class="form-group row">
+                                        <div class="btn-group col-md-12" >
+                                            <button class="btn btn-primary" ng-click="makeFalse(true,$event)"><h5>One way</h5></button>
+                                            <button class="btn btn-primary active" ng-click="makeFalse(false,$event)"><h5>Return</h5></button>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label >Flying to</label>
-                                        <input
-                                                type="text"
-                                                ng-model="reservation.destinationTo"
-                                                placeholder="Destination To ?"
-                                                uib-typeahead="state for state in databaseStates | filter:$viewValue"
-                                                class="form-control"
-                                                typeahead-show-hint="true"
-                                                typeahead-min-length="0"
-                                                ng-blur="changeMap(1)">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 control-label" ><h4>Flying from</h4></label>
+                                        <div class="col-sm-9">
+                                            <input
+                                                    type="text"
+                                                    ng-model="reservation.destinationFrom"
+                                                    placeholder="Destination From ?"
+                                                    uib-typeahead="state for state in databaseStates | filter:$viewValue"
+                                                    class="form-control"
+                                                    typeahead-show-hint="true"
+                                                    typeahead-min-length="0"
+                                                    id="destinationFromInput"
+                                                    ng-blur="changeMap(0)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 control-label"><h4>Flying to</h4></label>
+                                        <div class="col-sm-9">
+                                            <input
+                                                    type="text"
+                                                    ng-model="reservation.destinationTo"
+                                                    placeholder="Destination To ?"
+                                                    uib-typeahead="state for state in databaseStates | filter:$viewValue"
+                                                    class="form-control"
+                                                    typeahead-show-hint="true"
+                                                    typeahead-min-length="0"
+                                                    ng-blur="changeMap(1)">
+                                        </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-default">Submit</button>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-5">
+                                            <h4> Departure</h4>
+                                            <md-content>
+                                                <md-datepicker ng-model="departure" md-placeholder="Enter date" ng-change="setMinReturn()"
+                                                               md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                                            </md-content>
+                                        </div>
+                                        <div class="col-md-5" ng-hide="isReturn">
+                                            <h4> Return  </h4>
+
+                                            <md-content>
+                                                <md-datepicker ng-model="return" md-placeholder="Enter date"
+                                                               md-min-date="minDateReturn" md-max-date="maxDate"></md-datepicker>
+                                            </md-content>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <h4> Travelers  </h4>
+                                                <select class="form-control" id="sel1">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-6"></div>
+                                    </div>
+
+
+                                    <button type="submit" class="btn search pull-right"><h5>Search</h5></button>
+
                                 </form>
                             </div>
                             <div class="col-md-6">
-                                <div class="embed-responsive " style="color:black; height:100%; width:100%; margin-left:auto; margin-right: auto;">
+                                <div class="embed-responsive  embed-responsive-4by3" style="color:black; height:100%; width:100%; margin-left:auto; margin-right: auto;">
                                     <div class="embed-responsive-item" id="map"></div>
                                 </div>
                             </div>
@@ -62,6 +104,57 @@
         </div><!--end of container-->
 
     </header>
+
+
+  <section class="services">
+      <div class="container">
+          <div class="text-center">
+              <h2 class="why">Why us?</h2>
+          </div>
+          <br><br>
+
+          <div class="row">
+              <div class="col-md-4 text-center">
+
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x" style="color: #193446"></i>
+                  <i class="fa fa-plane fa-stack-1x faIcon" s></i>
+                </span>
+
+                  <h4>Best deals on flights</h4>
+                  <p>
+                      Thanks to our fast and powerful search engines, finding the best deals on cheap flight tickets and has never been easier or more convenient!
+                  </p>
+              </div>
+
+              <div class="col-md-4 text-center">
+
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x" style="color: #193446"></i>
+                  <i class="fa fa-bolt fa-stack-1x faIcon" ></i>
+                </span>
+
+                  <h4>Quick and easy</h4>
+                  <p>
+                      We offer a fast and efficient online booking service for all our great products. Get cheap flight tickets in a simple few short clicks!
+                  </p>
+              </div>
+
+              <div class="col-md-4 text-center">
+
+               <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x" style="color: #193446"></i>
+                  <i class="fa fa-usd fa-stack-1x faIcon" ></i>
+                </span>
+                  <h4>Best Price Guarantee</h4>
+                  <p>
+                      If you find lower rates on any other website, let us know within 48 hours after you booked here, and we will refund the difference. Our goal is to provide you with the lowest possible price.
+                  </p>
+              </div>
+
+          </div>
+      </div>
+  </section>
 
 
 

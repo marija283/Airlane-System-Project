@@ -68,5 +68,31 @@ AirlaneSystem
 
             }
 
+            // Form dateTime picker
+           // $scope.departure = new Date();
+           // $scope.return = new Date();
+            $scope.myDate = new Date();
+            $scope.minDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth(),
+                $scope.myDate.getDate());
+            $scope.maxDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth() + 12,
+                $scope.myDate.getDate());
+
+            $scope.setMinReturn = function(){
+                $scope.minDateReturn = $scope.departure;
+            }
+
+
+
+            // Form return or one way
+            $scope.makeFalse = function(val, event){
+                $scope.isReturn = val;
+                $(".btn").removeClass("active");
+                $(event.target).addClass('active');
+            }
 
         }]);
+

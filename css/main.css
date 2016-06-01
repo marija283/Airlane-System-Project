@@ -1,15 +1,23 @@
+.icon-bar{
+    border:1px solid white;
+}
+.navbar-toggle{
+    background-color:#ffdb4d;
+}
+.custNav{
+    background: rgb(1,34,105);
+}
 .header {
     background-image: url('../images/blue-sky-clouds.jpg');
     background-repeat: no-repeat;
-    background-size:100% 620px;
-    height: 1080px;
+    background-size:100% 720px;
     color:white;
-    margin-top: -72px;
+    /*margin-top: -150px;*/
 }
 
 .wrapper{
     background: rgba(0,0,0,0.72);
-    height: 50%;
+    height: 500px;
     border-radius: 5px;
     margin: 20px 0px;
     border-radius: .35294118em;
@@ -18,3 +26,82 @@
     padding: 20px 20px;
 }
 
+.logo-white{
+    background: url(../images/logo-white-words-tilt.png) no-repeat 120% 135%;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    border-radius: 200px;
+}
+
+.logo-white:hover {
+    background-position: -3% -12%;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.a-header img {
+    height: auto;
+    display: block;
+    max-width: 120px;
+}
+
+@media only screen and (max-width: 768px) {
+    /*For mobile*/
+    .a-header img {
+        display: none;
+    }
+    div#map {
+        display: none;
+    }
+    .wrapper{
+        height: 550px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .navbar-nav>li>a {
+        line-height: 93px !important;
+        font-family: 'montserrat',sans-serif;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-left: 10px;
+    }
+}
+#sel1{
+    margin-top: 11px !important;
+}
+.form-control{
+    height: 38px !important;
+}
+md-datepicker{
+    padding-bottom: 12px !important;
+    padding-top: 10px !important;
+    border-radius:4px;
+}
+md-content.md-default-theme, md-content{
+    background: none;
+}
+
+.search{
+    background-color: #ffdb4d;
+    color :#193446 ;
+    box-shadow: 0px 3px 0px rgba(255, 209, 26, 0.68);
+    letter-spacing: 1px;
+}
+
+.why{
+    font-family: 'montserrat',sans-serif;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.faIcon{
+    color: #ffdb4d;
+}
+
+.services{
+    padding: 8% 5%;
+    background: #ffdb4d;
+    color: #193446;
+}
