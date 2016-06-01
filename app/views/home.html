@@ -1,6 +1,57 @@
 
-    <div class="bg-success">
-        Hello {{home}}. <br>
-         <a ui-sref="test" class="btn btn-success">Go TEST</a>
-    </div>
+    <!--<div class="bg-success">-->
+        <!--Hello {{home}}. <br>-->
+         <!--<a ui-sref="test" class="btn btn-success">Go TEST</a>-->
+    <!--</div>-->
 
+    <style>
+        nav a{
+            color: white;
+        }
+        nav a:hover{
+            color: slategray;
+        }
+    </style>
+
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="wrapper">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Flying from</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Flying from">
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Flying to</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Flying to">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="embed-responsive " style="height:100%; width:100%; margin-left:auto; margin-right: auto;">
+                                    <div class="embed-responsive-item" id="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end of the black row-->
+        </div><!--end of container-->
+
+    </header>
+
+
+
+
+
+
+
+    <script src="js/mapInit.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYC4Xe4pOrfaY20H4_g9NEX8xSH21uT3s&callback=initMap"
+            async defer></script>

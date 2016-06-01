@@ -1,0 +1,20 @@
+.header {
+    background-image: url('../images/blue-sky-clouds.jpg');
+    background-repeat: no-repeat;
+    background-size:100% 620px;
+    height: 1080px;
+    color:white;
+    margin-top: -72px;
+}
+
+.wrapper{
+    background: rgba(0,0,0,0.72);
+    height: 50%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    border-radius: .35294118em;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.5);
+    padding: 20px 20px;
+}
+
