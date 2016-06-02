@@ -17,8 +17,8 @@
                                 <form>
                                     <div class="form-group row">
                                         <div class="btn-group col-md-12" >
-                                            <button class="btn btn-primary" id="oneWayBtn" ng-click="makeFalse(true)"><h5>One way</h5></button>
-                                            <button class="btn btn-primary active" id="returnBtn" ng-click="makeFalse(false)"><h5>Return</h5></button>
+                                            <button class="btn btn-primary" id="oneWayBtn" ng-click="changeReturnState(false)"><h5>One way</h5></button>
+                                            <button class="btn btn-primary active" id="returnBtn" ng-click="changeReturnState(true)"><h5>Return</h5></button>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -58,23 +58,23 @@
                                         <div class="col-md-5">
                                             <h4> Departure</h4>
                                             <md-content>
-                                                <md-datepicker ng-model="departure" md-placeholder="Enter date" ng-change="setMinReturn()"
+                                                <md-datepicker ng-model="reservation.departure" md-placeholder="Enter date" ng-change="setMinReturn()"
                                                                md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
                                             </md-content>
                                         </div>
-                                        <div class="col-md-5" ng-hide="isReturn">
+                                        <div class="col-md-5" ng-show="reservation.isReturn">
                                             <h4> Return  </h4>
 
                                             <md-content>
-                                                <md-datepicker ng-model="return" md-placeholder="Enter date"
+                                                <md-datepicker ng-model="reservation.return" md-placeholder="Enter date"
                                                                md-min-date="minDateReturn" md-max-date="maxDate"></md-datepicker>
                                             </md-content>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <h4> Travelers  </h4>
-                                                <select class="form-control" id="sel1">
-                                                    <option>1</option>
+                                                <select class="form-control" id="sel1" ng-model="reservation.travelers">
+                                                    <option selected>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                 </select>
@@ -90,7 +90,7 @@
                                     </div>
 
 
-                                    <button type="submit" class="btn search pull-right"><h5>Search</h5></button>
+                                    <button type="submit" ng-click="searchTickets()" class="btn search pull-right"><h5>Search</h5></button>
 
                                 </form>
                             </div>

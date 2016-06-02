@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row" ng-repeat="ticket in tickets">
+            <div class="col-md-1">{{ticket.destinationFrom}}</div>
+            <div class="col-md-1">{{ticket.destinationTo}}</div>
+            <div class="col-md-1">{{ticket.departure}}</div>
+            <div class="col-md-1">{{ticket.return}}</div>
+            <div class="col-md-1">{{ticket.cost}}</div>
+            <div class="col-md-1">{{ticket.deparutreHour}}</div>
+        </div>
+    </div>
+    <div id="triangle-bottomleft"></div>
+
+<style>
+    #triangle-bottomleft {
+        width: 0;
+        height: 0;
+        border-bottom: 100px solid red;
+        border-right: 100px solid transparent;
+        margin-left:10px;
+    }
+</style>
+</body>
+</html>

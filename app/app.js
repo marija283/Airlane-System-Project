@@ -20,6 +20,11 @@ AirlaneSystem
                 templateUrl:'app/views/test.html',
                 controller:'homeController'
             })
+            .state('searchTickets',{
+                url:'/search-tickets',
+                templateUrl:'app/views/searchTickets.html',
+                controller:'searchTicketsController'
+            })
     }]);
 
 

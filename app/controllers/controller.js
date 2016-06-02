@@ -8,7 +8,12 @@ AirlaneSystem
 
             $scope.reservation = {
                 destinationFrom:"",
-                destinationTo: ""
+                destinationTo: "",
+                departure:null,
+                return:null,
+                isReturn : true,
+                travelers : "1"
+
             };
 
             $scope.changeModel = function(states){
@@ -82,22 +87,65 @@ AirlaneSystem
                 $scope.myDate.getDate());
 
             $scope.setMinReturn = function(){
-                $scope.minDateReturn = $scope.departure;
+                $scope.minDateReturn = $scope.reservation.departure;
             }
 
 
 
             // Form return or one way
-            $scope.makeFalse = function(val){
-                $scope.isReturn = val;
+            $scope.changeReturnState = function(val){
+                $scope.reservation.isReturn = val;
                 $(".btn").removeClass("active");
 
-                if(val==true)
+                if(val==false){
                     $("#oneWayBtn").addClass('active');
-                else
+                }
+
+                else{
                     $("#returnBtn").addClass('active');
+                }
+
+
+
 
             }
 
-        }]);
+
+
+            $scope.searchTickets = function () {
+               // console.log($scope.reservation);
+                $rootScope.reservation = $scope.reservation;
+                $state.go("searchTickets");
+            }
+        }])
+    .controller('searchTicketsController', ['$rootScope','$scope','$state',
+        function($rootScope,$scope,$state){
+            //$scope.reservation = $rootScope.reservation;
+            $scope.reservation = {
+                destinationFrom:"Oklahoma",
+                destinationTo: "Minesota",
+                departure:"12.12.2015",
+                return:"10.10.2010",
+                isReturn : true,
+                travelers : "1"
+
+            };
+            $scope.tickets = [];
+            $scope.ticketsNum = Math.floor((Math.random() * 10) + 1);
+
+            for(i=0; i<$scope.ticketsNum; i++){
+                var ticket = {};
+                var hoursArray = ["09:00","12:00","15:00","18:00","21:00","23:00"];
+                ticket.destinationTo = $scope.reservation.destinationTo;
+                ticket.destinationFrom = $scope.reservation.destinationFrom;
+                ticket.departure = $scope.reservation.departure;
+                ticket.return = $scope.reservation.return;
+                ticket.travelers=  $scope.reservation.travelers;
+                ticket.isReturn = $scope.reservation.isReturn;
+                ticket.cost = Math.floor((Math.random() * 1000) + 100);
+                ticket.deparutreHour = hoursArray[Math.floor((Math.random() * 5))];
+                $scope.tickets.push(ticket);
+            }
+            console.log($scope.tickets);
+    }]);
 
