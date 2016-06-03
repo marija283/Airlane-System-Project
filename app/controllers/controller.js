@@ -171,6 +171,16 @@ AirlaneSystem
 
     .controller('paymentController', ['$rootScope','$scope','$state',
         function($rootScope,$scope,$state){
-            
+            $scope.ticket = {
+                cost:365,
+                departure : "12.12.2015",
+                deparutreHour :"21:00",
+                returnHour:"21:00",
+                destinationFrom:"Oklahoma",
+                destinationTo:"Minesota",
+                isReturn :true,
+                return:"10.10.2010",
+                travelers:"1"
+            };
     }]);
 

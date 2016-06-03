@@ -1,0 +1,163 @@
+<div class="container">
+    <div class="row step-2">
+        <div class="col-md-8 ">
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <h4>
+                        <b>Payment Details</b>
+                        <span class="pull-right">Payment Total <b>{{ticket.cost | currency}}</b></span>
+                    </h4>
+
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Card type</label>
+                                    <div class="input-group">
+                                        <label>
+                                            <input type="radio" name="fb" value="small" checked/>
+                                            <img src="images/creditcards/visa.png">
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="fb" value="big"/>
+                                            <img src="images/creditcards/mastercard.png">
+                                        </label>
+
+                                        <label>
+                                            <input id="fb3" type="radio" name="fb" value="med" />
+                                            <img src="images/creditcards/maestro.png">
+                                        </label>
+
+                                        <label>
+                                            <input id="fb4" type="radio" name="fb" value="long" />
+                                            <img src="images/creditcards/amex.png">
+                                        </label>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card number</label>
+                                    <div class="input-group">
+                                        <input
+                                                type="tel"
+                                                class="form-control"
+                                                name="cardNumber"
+                                                placeholder="Valid Card Number"
+                                                autocomplete="cc-number"
+                                                required autofocus
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-6">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">Expiration</span><span class="visible-xs-inline">EXP</span> date</label>
+                                    <input
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardExpiry"
+                                            placeholder="MM / YY"
+                                            autocomplete="cc-exp"
+                                            required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-3 ">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV code</label>
+                                    <input
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardCVC"
+                                            placeholder="CVC"
+                                            autocomplete="cc-csc"
+                                            required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-1 col-md-1 ">
+                                <div class="form-group">
+                                    <label> &nbsp;&nbsp;&nbsp; </label>
+                                    <img class="smaller-card" src="images/creditcards/credit.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Cardholder name</label>
+                                    <input type="text" class="form-control" placeholder="First name" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label >&nbsp;</label>
+                                    <input type="text" class="form-control" placeholder="Last name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="search btn  btn-lg btn-block" type="button">Buy tickets</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- CREDIT CARD FORM ENDS HERE -->
+        </div>
+
+        <!--summary-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4><b>Trip summary</b></h4></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b> Departure to {{ticket.destinationTo}} </b>
+                        </div>
+                        <div class="col-md-5">|&nbsp;{{ticket.departure}}</div>
+                    </div>
+                    <div>
+                        Departure hour - {{ticket.deparutreHour}}
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b>Return to {{ticket.destinationFrom}}</b>
+                        </div>
+                        <div class="col-md-5">|&nbsp;{{ticket.return}}</div>
+                    </div>
+                    <div>
+                        Return hour - {{ticket.returnHour}}
+                    </div>
+                    <hr>
+                    <div>
+                        <b>Passengers</b>
+                        {{ticket.travelers}}
+                    </div>
+                    <hr>
+                    <div>
+                        <b>Final price</b>
+                        <h4 ><b>{{ticket.cost | currency}}</b></h4>
+                    </div>
+                </div>
+            </div>
+        </div> <!--end summary-->
+    </div>
+</div>

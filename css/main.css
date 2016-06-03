@@ -181,3 +181,34 @@ html, body {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+/*  credit cards  */
+.i-iconfont-selected {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+     height: 0;
+    border: 8px solid;
+    border-color: transparent #f80 #f80 transparent;
+}
+
+label > input{ /* HIDE RADIO */
+    display:none;
+}
+label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+    border: 2px solid #f80;
+}
+
+.smaller-card{
+    height: 38px;
+}
+
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
