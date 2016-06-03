@@ -93,7 +93,7 @@ md-content.md-default-theme, md-content{
 .search{
     background-color: #ffdb4d;
     color :#193446 ;
-    box-shadow: 0px 3px 0px rgba(255, 209, 26, 0.68);
+    box-shadow: 0px 3px 0px rgba(204, 163, 0, 1);
     letter-spacing: 1px;
 }
 
@@ -153,4 +153,9 @@ footer {
     background-color: #ffdb4d;
     color: #193446;
     padding: 15px;
+}
+
+.step-2{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

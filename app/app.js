@@ -25,6 +25,17 @@ AirlaneSystem
                 templateUrl:'app/views/searchTickets.html',
                 controller:'searchTicketsController'
             })
+            .state('userInfo',{
+                url:'/user-info',
+                templateUrl:'app/views/userInfo.html',
+                controller:'userInfoController'
+            })
+            .state('payment',{
+                url:'/payment',
+                templateUrl:'app/views/payment.html',
+                controller:'paymentController'
+            })
+
     }]);
 
 
