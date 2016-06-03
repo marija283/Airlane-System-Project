@@ -201,6 +201,7 @@ label > input + img{ /* IMAGE STYLES */
     border:2px solid transparent;
 }
 label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+    border: 2px solid  rgb(1,34,105);
 }
 
 .smaller-card{
