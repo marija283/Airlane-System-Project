@@ -1,30 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row" ng-repeat="ticket in tickets">
-            <div class="col-md-1">{{ticket.destinationFrom}}</div>
-            <div class="col-md-1">{{ticket.destinationTo}}</div>
-            <div class="col-md-1">{{ticket.departure}}</div>
-            <div class="col-md-1">{{ticket.return}}</div>
-            <div class="col-md-1">{{ticket.cost}}</div>
-            <div class="col-md-1">{{ticket.deparutreHour}}</div>
+<div class="container containerTickets">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2 class="page-header">
+                All Tickets found :
+            </h2>
         </div>
     </div>
-    <div id="triangle-bottomleft"></div>
+
+    <div class="row ticketDiv" ng-repeat="ticket in tickets">
+                <div class="row custRow">
+                    <div class="col-xs-1 text-center">
+                        <small class="text-muted">Cost:</small><br>
+                        <span><b>${{ticket.cost}}</b></span>
+                    </div>
+                    <div class="col-xs-1">
+                        <small class="text-muted">Flight type:</small><br>
+                        <span><b ng-show="ticket.isReturn">Return</b> <b ng-hide="ticket.isReturn">One Way</b></span>
+                    </div>
+                    <div class="col-xs-1">
+                        <small class="text-muted">Class:</small><br>
+                        <span><b>{{ticket.class}}</b></span>
+                    </div>
+                    <div class="col-xs-2">
+                        <small class="text-muted">Time:</small><br>
+                        <span class="fa fa-clock-o"></span>
+                        <span class="timeLabel">{{ticket.deparutreHour}}</span>
+                    </div>
+                    <div class=" col-xs-offset-5 col-xs-2 text-right">
+                        <small class="text-muted">Check info:</small><br>
+                        <span><i class="fa fa-info"></i> <a href="#" style="color:black">Details</a></span>
+                    </div>
+                    <div class="col-xs-12"><hr></div>
+
+                </div>
+
+                <div class="row custRow">
+                    <div class="col-xs-3 col-xs-offset-1"><div class="text-center destinationDiv"> {{ticket.destinationFrom}} </div> </div>
+                    <div class="col-xs-3 "><img class="img img-responsive" src="images/planeGif.gif"/></div>
+                    <div class="col-xs-3"><div class="text-center destinationDiv"> {{ticket.destinationTo}} </div> </div>
+                </div>
+
+                <div class="row custRow">
+                    <div class="col-xs-2 col-xs-offset-10 text-right">
+                        <button class="btn btn-success btn-block">
+                            Select <span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+<div class="container containerProgres">
+    <div class="col-xs-12 text-center">
+        <h2 class="page-header">
+            Please wait while we search for your tickets
+        </h2>
+    </div>
+    <div class="col-xs-8 col-xs-offset-2 progress-container">
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-color" style="width:0%"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(".containerTickets").hide();
+    $(".progress-bar").animate({
+        width: "100%"
+    }, 2500,function(){
+        $(".containerTickets").show();
+        $(".containerProgres").hide();
+    });
+</script>
+
 
 <style>
-    #triangle-bottomleft {
-        width: 0;
-        height: 0;
-        border-bottom: 100px solid red;
-        border-right: 100px solid transparent;
-        margin-left:10px;
+    .custRow{
+        padding-top: 10px;
     }
+
+    .ticketDiv{
+        border:1px solid grey;
+        border-radius:8px;
+        padding: 10px 10px;
+        margin-top: 30px;
+    }
+
+    .destinationDiv{
+        background-color: lightgrey;
+        color:black;
+        height:45px;
+        padding-top: 10px;
+        border-radius: 8px;
+        font-size:18px;
+        font-family: Verdana;
+    }
+
+    @media only screen and (max-width: 500px) {
+        /*formobile*/
+        .custRow{
+            font-size:0.6em !important;
+        }
+    }
+    .timeLabel{
+        font-weight:bold;
+    }
+    .costLabel{
+        font-width:bold;
+        font-size:3em;
+    }
+
+    .progress.active .progress-bar {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+
+    .containerProgres{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .containerTickets{
+        padding-top: 10px;
+        padding-bottom: 100px;
+    }
+    .progress-color{
+        background-color: #ffdb4d ;
+    }
+
+
+
 </style>
-</body>
-</html>

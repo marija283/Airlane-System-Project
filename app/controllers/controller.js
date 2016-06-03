@@ -135,7 +135,8 @@ AirlaneSystem
 
             for(i=0; i<$scope.ticketsNum; i++){
                 var ticket = {};
-                var hoursArray = ["09:00","12:00","15:00","18:00","21:00","23:00"];
+                var hoursArray = ["09:00 AM","12:00 PM","15:00 PM","18:00 PM","21:00 PM","23:00 PM"];
+                var classArray = ["Economy","Premium","Bussiness","First"];
                 ticket.destinationTo = $scope.reservation.destinationTo;
                 ticket.destinationFrom = $scope.reservation.destinationFrom;
                 ticket.departure = $scope.reservation.departure;
@@ -144,6 +145,7 @@ AirlaneSystem
                 ticket.isReturn = $scope.reservation.isReturn;
                 ticket.cost = Math.floor((Math.random() * 1000) + 100);
                 ticket.deparutreHour = hoursArray[Math.floor((Math.random() * 5))];
+                ticket.class = classArray[Math.floor((Math.random() * 3))];
                 $scope.tickets.push(ticket);
             }
             console.log($scope.tickets);
