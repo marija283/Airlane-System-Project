@@ -35,6 +35,11 @@ AirlaneSystem
                 templateUrl:'app/views/payment.html',
                 controller:'paymentController'
             })
+            .state('confirmation',{
+                url:'/confirmation',
+                templateUrl:'app/views/confirmation.html',
+                controller:'confirmationController'
+            })
 
     }]);
 
