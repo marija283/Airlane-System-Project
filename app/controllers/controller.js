@@ -144,11 +144,18 @@ AirlaneSystem
                 ticket.travelers=  $scope.reservation.travelers;
                 ticket.isReturn = $scope.reservation.isReturn;
                 ticket.cost = Math.floor((Math.random() * 1000) + 100);
-                ticket.deparutreHour = hoursArray[Math.floor((Math.random() * 5))];
+                ticket.departureHour = hoursArray[Math.floor((Math.random() * 5))];
+                ticket.returnHour = hoursArray[Math.floor((Math.random() * 5))];
                 ticket.class = classArray[Math.floor((Math.random() * 3))];
                 $scope.tickets.push(ticket);
             }
-            console.log($scope.tickets);
+           // console.log($scope.tickets);
+
+            $scope.openModal = function(ticket){
+               // console.log(ticket);
+                $scope.modalTicket = ticket;
+                $("#myModal").modal();
+            }
     }])
 
     .controller('userInfoController', ['$rootScope','$scope','$state',

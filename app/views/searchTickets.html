@@ -24,33 +24,53 @@
                     <div class="col-xs-2">
                         <small class="text-muted">Time:</small><br>
                         <span class="fa fa-clock-o"></span>
-                        <span class="timeLabel">{{ticket.deparutreHour}}</span>
+                        <span class="timeLabel">{{ticket.departureHour}}</span>
                     </div>
                     <div class=" col-xs-offset-5 col-xs-2 text-right">
                         <small class="text-muted">Check info:</small><br>
-                        <span><i class="fa fa-info"></i> <a href="#" style="color:black">Details</a></span>
+                        <span><i class="fa fa-info"></i> <span ng-click="openModal(ticket)" style="color:black; cursor:pointer">Details</span></span>
                     </div>
                     <div class="col-xs-12"><hr></div>
 
                 </div>
 
                 <div class="row custRow">
-                    <div class="col-xs-3 col-xs-offset-1"><div class="text-center destinationDiv"> {{ticket.destinationFrom}} </div> </div>
+                    <div class="col-xs-3 col-xs-offset-1 text-center">
+                        <div class="text-center destinationDiv">
+                            <span class="fa fa-clock-o"></span>
+                            <span class="timeLabel">{{ticket.departureHour}}</span> <br>
+                        </div>
+                        <span class="destinationSpan">{{ticket.destinationFrom}}</span>
+                    </div>
+
                     <div class="col-xs-3 "><img class="img img-responsive" src="images/planeGif.gif"/></div>
-                    <div class="col-xs-3"><div class="text-center destinationDiv"> {{ticket.destinationTo}} </div> </div>
+
+                    <div class="col-xs-3  text-center">
+                        <div class="text-center destinationDiv ">
+                            <span class="fa fa-clock-o"></span>
+                            <span class="timeLabel">{{ticket.returnHour}}</span> <br>
+                        </div>
+                        <span class="destinationSpan">{{ticket.destinationTo}}</span>
+                    </div>
+
+                    <div class="col-xs-2 text-center">
+                        <span class="costLabel">${{ticket.cost}}</span>
+                    </div>
                 </div>
 
                 <div class="row custRow">
                     <div class="col-xs-2 col-xs-offset-10 text-right">
-                        <button class="btn btn-success btn-block">
+                        <a class="btn btn-success btn-block" ui-sref="userInfo">
                             Select <span class="glyphicon glyphicon-chevron-right"></span>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
             </div>
 
     </div>
+
+    <!--Loading DIV-->
 <div class="container containerProgres">
     <div class="col-xs-12 text-center">
         <h2 class="page-header">
@@ -62,7 +82,55 @@
             <div class="progress-bar progress-color" style="width:0%"></div>
         </div>
     </div>
-</div>
+</div>   <!-- END Loading DIV-->
+
+
+<!--Modal DIV-->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Trip summary</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <b> Departure from {{modalTicket.destinationFrom}} </b>
+                    </div>
+                    <div class="col-xs-6"> <span class="fa fa-clock-o"></span> {{modalTicket.departureHour}}</div>
+                    <div class="col-xs-6"> <span class="fa fa-calendar"></span> {{modalTicket.departure}}</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <b> Departure to {{modalTicket.destinationTo}} </b>
+                    </div>
+                    <div class="col-xs-6"> <span class="fa fa-clock-o"></span> {{modalTicket.returnHour}}</div>
+                    <div class="col-xs-6"> <span class="fa fa-calendar"></span> {{modalTicket.return}}</div>
+                </div>
+                <hr>
+                <div>
+                    <b>Passengers</b>
+                    {{modalTicket.travelers}}
+                </div>
+                <hr>
+                <div>
+                    <b>Final price</b>
+                    <h4 ><b>{{modalTicket.cost | currency}}</b></h4>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div> <!--END Modal DIV-->
+
 
 
 <script>
@@ -97,6 +165,9 @@
         font-size:18px;
         font-family: Verdana;
     }
+    .destinationSpan{
+        font-style: italic;
+    }
 
     @media only screen and (max-width: 500px) {
         /*formobile*/
@@ -109,7 +180,7 @@
     }
     .costLabel{
         font-width:bold;
-        font-size:3em;
+        font-size:2em;
     }
 
     .progress.active .progress-bar {
@@ -128,6 +199,8 @@
     .progress-color{
         background-color: #ffdb4d ;
     }
+
+
 
 
 
