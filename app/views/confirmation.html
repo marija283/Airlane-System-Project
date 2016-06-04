@@ -1,13 +1,56 @@
-<div class="container step-2">
-    <h3><b>Confirmation page</b></h3>
-    <br>
-    <br>
-    Your payment information
-    <hr>
+<div class="container ">
+    <div class="row step-2">
+        <div class="col-md-8 ">
+            <h3><b>Confirmation page</b></h3>
+            <br>
+            <br>
+            Your payment information
+            <hr>
 
 
-    <ul class="list-unstyled">
-        <li><span style="color:#5cb85c;" class=" fa fa-check"></span> {{ticket.travelers}} ticket(s) for {{ticket.cost | currency}}</li>
-        <li><span style="color:#5cb85c;" class="fa fa-check"></span> Your tickets have been sent to <b>{{person.email}}</b></li>
-    </ul>
+            <ul class="list-unstyled">
+                <li><span style="color:#5cb85c;" class=" fa fa-check"></span> {{ticket.travelers}} ticket(s) for {{ticket.cost | currency}}</li>
+                <li><span style="color:#5cb85c;" class="fa fa-check"></span> Your tickets have been sent to <b>{{person.email}}</b></li>
+            </ul>
+            <!--<button class="btn btn-primary"><a href="/Airlane-System-Project/app/views/print.html">Print</a></button>-->
+            <button class="btn btn-success" ng-click="redirectToPrint()">Print your tickets</button>
+        </div>
+        <!--summary-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4><b>Trip summary</b></h4></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b> Departure to {{ticket.destinationTo}} </b>
+                        </div>
+                        <div class="col-md-5">|&nbsp;{{ticket.departure}}</div>
+                    </div>
+                    <div>
+                        Departure hour - {{ticket.deparutreHour}}
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b>Return to {{ticket.destinationFrom}}</b>
+                        </div>
+                        <div class="col-md-5">|&nbsp;{{ticket.return}}</div>
+                    </div>
+                    <div>
+                        Return hour - {{ticket.returnHour}}
+                    </div>
+                    <hr>
+                    <div>
+                        <b>Passengers</b>
+                        {{ticket.travelers}}
+                    </div>
+                    <hr>
+                    <div>
+                        <b>Final price</b>
+                        <h4 ><b>{{ticket.cost | currency}}</b></h4>
+                    </div>
+                </div>
+            </div>
+        </div> <!--end summary-->
+    </div>
 </div>

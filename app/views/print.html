@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <title></title>
+    <script src="/Airlane-System-Project/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function () {
+            window.print();
+        });
+    </script>
+    <style type="text/css">
+        .print-tr {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<form id="form1" >
+    <tabele class="print-tr " style="width:700px;font-size: 1.3em;" align="center">
+        <tr>
+            <td>Class
+            {{ticket.class}}</td>
+
+        </tr>
+        <tr>
+            <td>Flight and Date
+
+            Gate
+           Seat</td>
+        </tr>
+        <tr>
+            <td>21.21.0215
+
+           A4
+            120</td>
+        </tr>
+        <tr>
+            <td>Boarding time</td>
+            <td>21:00</td>
+            <td></td>
+            <td></td>
+        </tr>
+         <tr>
+            <td>From</td>
+            <td></td>
+            <td>To</td>
+            <td></td>
+        </tr>
+         <tr>
+            <td>{{ticket.destinationFrom}}</td>
+            <td></td>
+            <td>{{ticket.destinationTo}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Surname</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{{person.name}}</td>
+            <td>{{person.surname}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+    </tabele>
+
+</form>
+</body>
+</html>

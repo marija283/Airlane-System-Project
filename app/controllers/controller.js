@@ -183,8 +183,8 @@ AirlaneSystem
                 travelers:"1"
             };
     }])
-    .controller('confirmationController', ['$rootScope','$scope','$state',
-        function($rootScope,$scope,$state){
+    .controller('confirmationController', ['$rootScope','$scope','$window','$location',
+        function($rootScope,$scope,$window,$location){
             $scope.ticket = {
                 cost:365,
                 departure : "12.12.2015",
@@ -199,6 +199,12 @@ AirlaneSystem
 
             $scope.person = {
                 email:'marija283@hotmail.com'
-            }
+            };
+
+            $scope.redirectToPrint = function () {
+                var printUrl = window.location.origin + '/Airlane-System-Project/app/views/print.html';
+                //console.log(printUrl.toString());
+                $window.open(printUrl, '_blank');
+            };
     }]);
 
