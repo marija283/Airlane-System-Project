@@ -224,3 +224,14 @@ label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
 .stepsNotCompleted{
     opacity: 0.5;
 }
+
+@media only screen and (max-width: 768px) {
+    /*For mobile*/
+    .stepsLi{
+        width:40px;
+        height:40px;
+        padding:0px 0px !important;
+        margin-right: -4px;
+        margin-top: 10px;
+    }
+}
