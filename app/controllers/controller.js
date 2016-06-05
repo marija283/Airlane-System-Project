@@ -120,16 +120,19 @@ AirlaneSystem
         }])
     .controller('searchTicketsController', ['$rootScope','$scope','$state',
         function($rootScope,$scope,$state){
-            //$scope.reservation = $rootScope.reservation;
-            $scope.reservation = {
-                destinationFrom:"Oklahoma",
-                destinationTo: "Minesota",
-                departure:"12.12.2015",
-                return:"10.10.2010",
-                isReturn : true,
-                travelers : "1"
+            $scope.reservation = $rootScope.reservation;
+            // KOMENTIRAJ GORE...UN COMMENT DOLE ZA TEST
+            //$scope.reservation = {
+            //    destinationFrom:"Oklahoma",
+            //    destinationTo: "Minesota",
+            //    departure:"12.12.2015",
+            //    return:"10.10.2010",
+            //    isReturn : true,
+            //    travelers : "1"
+            //
+            //};
 
-            };
+            console.log($scope.reservation);
             $scope.tickets = [];
             $scope.ticketsNum = Math.floor((Math.random() * 10) + 1);
 
@@ -156,22 +159,28 @@ AirlaneSystem
                 $scope.modalTicket = ticket;
                 $("#myModal").modal();
             }
+
+            $scope.selectTicket = function(ticket){
+                $rootScope.ticket = ticket;
+            }
     }])
 
     .controller('userInfoController', ['$rootScope','$scope','$state',
         function($rootScope,$scope,$state) {
 
-            $scope.ticket = {
-                cost:365,
-                departure : "12.12.2015",
-                deparutreHour :"21:00",
-                returnHour:"21:00",
-                destinationFrom:"Oklahoma",
-                destinationTo:"Minesota",
-                isReturn :true,
-                return:"10.10.2010",
-                travelers:"1"
-            };
+            $scope.ticket = $rootScope.ticket;
+            // KOMENTIRAJ GORE...UN COMMENT DOLE ZA TEST
+            //$scope.ticket = {
+            //    cost:365,
+            //    departure : "12.12.2015",
+            //    deparutreHour :"21:00",
+            //    returnHour:"21:00",
+            //    destinationFrom:"Oklahoma",
+            //    destinationTo:"Minesota",
+            //    isReturn :true,
+            //    return:"10.10.2010",
+            //    travelers:"1"
+            //};
 
 
     }])
