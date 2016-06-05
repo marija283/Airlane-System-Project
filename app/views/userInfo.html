@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row step-2">
         <h3><b>Your trip to {{ticket.destinationTo}}</b>
-             <small>{{ticket.departure}} | Total price: {{ticket.cost}}</small>
+             <small>{{ticket.departure}} | Total price: {{ticket.cost | currency}}</small>
         </h3>
         <br>
         <div class="col-md-8 ">
@@ -341,20 +341,20 @@
                         <div class="col-md-7">
                            <b> Departure to {{ticket.destinationTo}} </b>
                         </div>
-                        <div class="col-md-5">|&nbsp;{{ticket.departure}}</div>
+                        <div class="col-md-5">&nbsp;<span class="fa fa-calendar"></span> {{ticket.departure}}</div>
                     </div>
                     <div>
-                        Departure hour - {{ticket.deparutreHour}}
+                        <span class="fa fa-clock-o"></span> {{ticket.deparutreHour}}
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-7">
                             <b>Return to {{ticket.destinationFrom}}</b>
                         </div>
-                        <div class="col-md-5">|&nbsp;{{ticket.return}}</div>
+                        <div class="col-md-5">&nbsp;<span class="fa fa-calendar"></span> {{ticket.return}}</div>
                     </div>
                     <div>
-                        Return hour - {{ticket.returnHour}}
+                        <span class="fa fa-clock-o"></span> {{ticket.returnHour}}
                     </div>
                     <hr>
                     <div>
