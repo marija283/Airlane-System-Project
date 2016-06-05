@@ -13,8 +13,8 @@
         </div>
     </div>
     <div class="row step-2">
+        <h3><b>Confirmation page</b></h3>
         <div class="col-md-8 ">
-            <h3><b>Confirmation page</b></h3>
             <br>
             <br>
             Your payment information
@@ -70,6 +70,43 @@
         <div class="row">
             <div class="col-xs-6">{{person.name}}</div>
             <div class="col-xs-6">{{person.surname}}</div>
+        </div>
+        <hr>
+    </div>
+    <div style="border: 1px solid darkgray; padding: 5px;" ng-if="ticket.travelers >= 2">
+        {{ticket.class}} class
+        <div class="row">
+            <div class="col-xs-6">Flight & date</div>
+            <div class="col-xs-3">Gate</div>
+            <div class="col-xs-3">Seat</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{ticket.departure | date:'yyyy-MM-dd'}}</div>
+            <div class="col-xs-3">A2</div>
+            <div class="col-xs-3">106</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-4">Boarding time</div>
+            <div class="col-xs-4">{{ticket.departureHour}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-6">From</div>
+            <div class="col-xs-6">To</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{ticket.destinationFrom}}</div>
+            <div class="col-xs-6">{{ticket.destinationTo}}</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-6">Name</div>
+            <div class="col-xs-6">Surname</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{person.name2}}</div>
+            <div class="col-xs-6">{{person.surname2}}</div>
         </div>
         <hr>
     </div>
