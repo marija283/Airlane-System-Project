@@ -1,4 +1,27 @@
 <div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-right">
+            <ul class="list-unstyled list-inline">
+                <li class="stepsLi"> <img class="img img-responsive" ng-src="images/steps/step1.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" style="opacity: 0.5;" ng-src="images/steps/connect.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" style="opacity: 0.5;" ng-src="images/steps/step2.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" ng-src="images/steps/connect.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" ng-src="images/steps/step3.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" ng-src="images/steps/connect.png"> </li>
+                <li class="stepsLi"> <img class="img img-responsive" ng-src="images/steps/step4.png"> </li>
+            </ul>
+        </div>
+
+    </div>
+<style>
+    .stepsLi{
+        width:50px;
+        height:50px;
+        padding:0px 0px !important;
+        margin-right: -4px;
+    }
+</style>
+
     <div class="row step-2">
         <h3><b>Your trip to {{ticket.destinationTo}}</b>
              <small>{{ticket.departure | date:'yyyy-MM-dd'}} | Total price: {{ticket.cost | currency}}</small>
