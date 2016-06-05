@@ -222,7 +222,7 @@ label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
 }
 
 .stepsNotCompleted{
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 @media only screen and (max-width: 768px) {
