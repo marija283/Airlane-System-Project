@@ -132,7 +132,7 @@ AirlaneSystem
             //
             //};
 
-            console.log($scope.reservation);
+
             $scope.tickets = [];
             $scope.ticketsNum = Math.floor((Math.random() * 10) + 1);
 
@@ -182,40 +182,56 @@ AirlaneSystem
             //    travelers:"1"
             //};
 
+            $scope.continuePaymentBtn = function(){
+                $rootScope.person = $scope.person;
+                console.log($scope.person);
+            }
+
 
     }])
 
     .controller('paymentController', ['$rootScope','$scope','$state',
         function($rootScope,$scope,$state){
-            $scope.ticket = {
-                cost:365,
-                departure : "12.12.2015",
-                deparutreHour :"21:00",
-                returnHour:"21:00",
-                destinationFrom:"Oklahoma",
-                destinationTo:"Minesota",
-                isReturn :true,
-                return:"10.10.2010",
-                travelers:"1"
-            };
+            $scope.ticket = $rootScope.ticket;
+            $scope.person = $rootScope.person;
+
+            // KOMENTIRAJ GORE...UN COMMENT DOLE ZA TEST
+            //$scope.ticket = {
+            //    cost:365,
+            //    departure : "12.12.2015",
+            //    deparutreHour :"21:00",
+            //    returnHour:"21:00",
+            //    destinationFrom:"Oklahoma",
+            //    destinationTo:"Minesota",
+            //    isReturn :true,
+            //    return:"10.10.2010",
+            //    travelers:"1"
+            //};
+            $scope.continueConfirmBtn = function(){
+                $rootScope.person = $scope.person;
+                console.log($scope.person);
+            }
     }])
     .controller('confirmationController', ['$rootScope','$scope','$window','$location',
         function($rootScope,$scope,$window,$location){
-            $scope.ticket = {
-                cost:365,
-                departure : "12.12.2015",
-                deparutreHour :"21:00",
-                returnHour:"21:00",
-                destinationFrom:"Oklahoma",
-                destinationTo:"Minesota",
-                isReturn :true,
-                return:"10.10.2010",
-                travelers:"1"
-            };
+            $scope.ticket = $rootScope.ticket;
+            $scope.person = $rootScope.person;
+            // KOMENTIRAJ GORE...UN COMMENT DOLE ZA TEST
+            //$scope.ticket = {
+            //    cost:365,
+            //    departure : "12.12.2015",
+            //    deparutreHour :"21:00",
+            //    returnHour:"21:00",
+            //    destinationFrom:"Oklahoma",
+            //    destinationTo:"Minesota",
+            //    isReturn :true,
+            //    return:"10.10.2010",
+            //    travelers:"1"
+            //};
 
-            $scope.person = {
-                email:'marija283@hotmail.com'
-            };
+            //$scope.person = {
+            //    email:'marija283@hotmail.com'
+            //};
 
             $scope.redirectToPrint = function () {
                 var printUrl = window.location.origin + '/Airlane-System-Project/app/views/print.html';
