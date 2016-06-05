@@ -200,8 +200,8 @@ AirlaneSystem
                 travelers:"1"
             };
     }])
-    .controller('confirmationController', ['$rootScope','$scope','$window','$location',
-        function($rootScope,$scope,$window,$location){
+    .controller('confirmationController', ['$rootScope','$scope',
+        function($rootScope,$scope){
             $scope.ticket = {
                 cost:365,
                 departure : "12.12.2015",
