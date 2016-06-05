@@ -74,8 +74,6 @@ AirlaneSystem
             }
 
             // Form dateTime picker
-           // $scope.departure = new Date();
-           // $scope.return = new Date();
             $scope.myDate = new Date();
             $scope.minDate = new Date(
                 $scope.myDate.getFullYear(),
@@ -90,27 +88,17 @@ AirlaneSystem
                 $scope.minDateReturn = $scope.reservation.departure;
             }
 
-
-
             // Form return or one way
             $scope.changeReturnState = function(val){
                 $scope.reservation.isReturn = val;
                 $(".btn").removeClass("active");
-
                 if(val==false){
                     $("#oneWayBtn").addClass('active');
                 }
-
                 else{
                     $("#returnBtn").addClass('active');
                 }
-
-
-
-
             }
-
-
 
             $scope.searchTickets = function () {
                // console.log($scope.reservation);
@@ -139,7 +127,7 @@ AirlaneSystem
             for(i=0; i<$scope.ticketsNum; i++){
                 var ticket = {};
                 var hoursArray = ["09:00 AM","12:00 PM","15:00 PM","18:00 PM","21:00 PM","23:00 PM"];
-                var classArray = ["Economy","Premium","Bussiness","First"];
+                var classArray = ["Economy","Premium","Business","First"];
                 ticket.destinationTo = $scope.reservation.destinationTo;
                 ticket.destinationFrom = $scope.reservation.destinationFrom;
                 ticket.departure = $scope.reservation.departure;
@@ -187,8 +175,6 @@ AirlaneSystem
                 console.log($scope.person);
             }
 
-
-
     }])
 
     .controller('paymentController', ['$rootScope','$scope','$state',
@@ -230,7 +216,6 @@ AirlaneSystem
             //    return:"10.10.2010",
             //    travelers:"1"
             //};
-
 
             //$scope.person = {
             //    email:'marija283@hotmail.com'
