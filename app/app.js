@@ -27,18 +27,43 @@ AirlaneSystem
             })
             .state('userInfo',{
                 url:'/user-info',
-                templateUrl:'app/views/userInfo.html',
-                controller:'userInfoController'
+                views:{
+                    '':{
+                        templateUrl:'app/views/userInfo.html',
+                        controller:'userInfoController'
+                    },
+                    'trip@userInfo':{
+                        templateUrl:"app/views/tripSummary.html",
+                        controller:"tripSummaryController"
+                    }
+                }
             })
             .state('payment',{
                 url:'/payment',
-                templateUrl:'app/views/payment.html',
-                controller:'paymentController'
+                views:{
+                    '':{
+                        templateUrl:'app/views/payment.html',
+                        controller:'paymentController'
+                    },
+                    'trip@payment':{
+                        templateUrl:"app/views/tripSummary.html",
+                        controller:"tripSummaryController"
+                    }
+                }
             })
             .state('confirmation',{
                 url:'/confirmation',
-                templateUrl:'app/views/confirmation.html',
-                controller:'confirmationController'
+                views:{
+                    '':{
+                        templateUrl:'app/views/confirmation.html',
+                        controller:'confirmationController'
+                    },
+                    'trip@confirmation':{
+                        templateUrl:"app/views/tripSummary.html",
+                        controller:"tripSummaryController"
+                    }
+                }
+
             })
 
     }]);

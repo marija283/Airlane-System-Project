@@ -238,12 +238,17 @@ AirlaneSystem
 
             $scope.printDiv = function(divName) {
                 var printContents = document.getElementById(divName).innerHTML;
-                var popupWin = window.open('', '_blank', 'width=300,height=300');
+                var popupWin = window.open('', '_blank', 'width=700,height=500');
                 popupWin.document.open();
                 popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="/Airlane-System-Project/bower_components/bootstrap/dist/css/bootstrap.min.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
                 popupWin.document.close();
             }
 
+    }])
+
+    .controller('tripSummaryController',['$scope', '$rootScope',
+        function($scope, $rootScope){
+            $scope.ticket = $rootScope.ticket;
     }]);
 
 
