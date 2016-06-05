@@ -164,7 +164,7 @@ AirlaneSystem
             $scope.ticket = {
                 cost:365,
                 departure : "12.12.2015",
-                deparutreHour :"21:00",
+                departureHour :"21:00",
                 returnHour:"21:00",
                 destinationFrom:"Oklahoma",
                 destinationTo:"Minesota",
@@ -181,7 +181,7 @@ AirlaneSystem
             $scope.ticket = {
                 cost:365,
                 departure : "12.12.2015",
-                deparutreHour :"21:00",
+                departureHour :"21:00",
                 returnHour:"21:00",
                 destinationFrom:"Oklahoma",
                 destinationTo:"Minesota",
@@ -195,7 +195,7 @@ AirlaneSystem
             $scope.ticket = {
                 cost:365,
                 departure : "12.12.2015",
-                deparutreHour :"21:00",
+                departureHour :"21:00",
                 returnHour:"21:00",
                 destinationFrom:"Oklahoma",
                 destinationTo:"Minesota",
@@ -205,13 +205,17 @@ AirlaneSystem
             };
 
             $scope.person = {
-                email:'marija283@hotmail.com'
+                email:'marija283@hotmail.com',
+                name:"Marija",
+                surname:"Todorova"
             };
 
-            $scope.redirectToPrint = function () {
-                var printUrl = window.location.origin + '/Airlane-System-Project/app/views/print.html';
-                //console.log(printUrl.toString());
-                $window.open(printUrl, '_blank');
-            };
+            $scope.printDiv = function(divName) {
+                var printContents = document.getElementById(divName).innerHTML;
+                var popupWin = window.open('', '_blank', 'width=300,height=300');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="/Airlane-System-Project/bower_components/bootstrap/dist/css/bootstrap.min.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+                popupWin.document.close();
+            }
     }]);
 
