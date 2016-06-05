@@ -12,8 +12,7 @@
                 <li><span style="color:#5cb85c;" class=" fa fa-check"></span> {{ticket.travelers}} ticket(s) for {{ticket.cost | currency}}</li>
                 <li><span style="color:#5cb85c;" class="fa fa-check"></span> Your tickets have been sent to <b>{{person.email}}</b></li>
             </ul>
-            <!--<button class="btn btn-primary"><a href="/Airlane-System-Project/app/views/print.html">Print</a></button>-->
-            <button class="btn btn-success" ng-click="redirectToPrint()">Print your tickets</button>
+            <button class="btn btn-success" ng-click="printDiv('printable')">Print your tickets</button>
         </div>
         <!--summary-->
         <div class="col-md-4">
@@ -24,8 +23,10 @@
                         <div class="col-xs-12">
                             <b> Departure from {{ticket.destinationFrom}} </b>
                         </div>
+
                         <div class="col-xs-6"> <span class="fa fa-clock-o"></span> {{ticket.departureHour}}</div>
                         <div class="col-xs-6"> <span class="fa fa-calendar"></span> {{ticket.departure  | date:'yyyy-MMM-dd'}}</div>
+
                     </div>
                     <hr>
                     <div class="row">
@@ -48,5 +49,46 @@
                 </div>
             </div>
         </div> <!--end summary-->
+    </div>
+</div>
+
+
+<div id="printable" ng-hide="1" >
+    <div style="border: 1px solid darkgray; padding: 5px;">
+        {{ticket.class}} class
+        <div class="row">
+            <div class="col-xs-6">Flight & date</div>
+            <div class="col-xs-3">Gate</div>
+            <div class="col-xs-3">Seat</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{ticket.departure | date:'yyyy-MM-dd'}}</div>
+            <div class="col-xs-3">A2</div>
+            <div class="col-xs-3">105</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-4">Boarding time</div>
+            <div class="col-xs-4">{{ticket.departureHour}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-6">From</div>
+            <div class="col-xs-6">To</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{ticket.destinationFrom}}</div>
+            <div class="col-xs-6">{{ticket.destinationTo}}</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-6">Name</div>
+            <div class="col-xs-6">Surname</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">{{person.name}}</div>
+            <div class="col-xs-6">{{person.surname}}</div>
+        </div>
+        <hr>
     </div>
 </div>
