@@ -70,13 +70,13 @@ AirlaneSystem
 
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-$(function() {
-    $('body').on('click', '.page-scroll', function(event) {
-        event.preventDefault();
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
-        }, 1500, 'easeInOutExpo');
-
-    });
-});
+//$(function() {
+//    $('body').on('click', '.page-scroll', function(event) {
+//        event.preventDefault();
+//        var $anchor = $(this);
+//        $('html, body').stop().animate({
+//            scrollTop: $($anchor.attr('href')).offset().top
+//        }, 1500, 'easeInOutExpo');
+//
+//    });
+//});

@@ -47,8 +47,11 @@
 
 @media only screen and (max-width: 768px) {
     /*For mobile*/
-    .a-header img {
+    #logoDesktop {
         display: none;
+    }
+    #logoMobile {
+        display: inline-block;
     }
     div#map {
         display: none;
@@ -60,6 +63,16 @@
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
+    #logoDesktop {
+        display: inline-block;
+    }
+    #logoMobile {
+        display: none;
+
+    }
+    .navbar-nav{
+        height: 130px;
+    }
     .navbar-nav>li>a {
         line-height: 93px !important;
         font-family: 'montserrat',sans-serif;
@@ -93,6 +106,12 @@ md-content.md-default-theme, md-content{
 .search{
     background-color: #ffdb4d;
     color :#193446 ;
+    box-shadow: 0px 3px 0px rgba(204, 163, 0, 1);
+    letter-spacing: 1px;
+}
+.greenBtn{
+    background-color: #5cb85c;
+    color :white ;
     box-shadow: 0px 3px 0px rgba(204, 163, 0, 1);
     letter-spacing: 1px;
 }

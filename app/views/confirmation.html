@@ -17,13 +17,31 @@
         <div class="col-md-8 ">
             <br>
             <br>
-            Your payment information
+            <div class="well" style="font-size: 1.3em">
+                Dear user, <br>
+                Your ticket have been <span style="color:#5cb85c">successfully </span> paid. You can print them rigth now <br>
+                but We have also  sent you this confirmation on email.
+            </div>
+
             <hr>
 
 
             <ul class="list-unstyled">
-                <li><span style="color:#5cb85c;" class=" fa fa-check"></span> {{ticket.travelers}} ticket(s) for {{ticket.cost | currency}}</li>
-                <li><span style="color:#5cb85c;" class="fa fa-check"></span> Your tickets have been sent to <b>{{person.email}}</b></li>
+                <li>
+                    <span class=" fa fa-user"></span>
+                    {{person.cardHolderName}} {{person.cardHolderSurname}}
+                </li>
+                <li>
+                    <span class="fa fa-home">
+                        {{person.city}}, {{person.country}}</span>
+                </li>
+                <li><span style="color:#5cb85c;" class="fa fa-check"></span>
+                    Your tickets have been sent to <b>{{person.email}}</b>
+                </li>
+                <li><span style="color:#5cb85c;" class=" fa fa-check"></span>
+                    {{ticket.travelers}} ticket(s) for <b>{{ticket.cost | currency}}</b>
+                </li>
+
             </ul>
             <button class="btn btn-success" ng-click="printDiv('printable')">Print your tickets</button>
         </div>
