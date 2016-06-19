@@ -14,17 +14,18 @@
                     <div class="wrapper">
                         <div class="row">
                             <div class="col-md-6">
-                                <form>
+                                <form name="form">
                                     <div class="form-group row">
                                         <div class="btn-group col-md-12" >
                                             <button class="btn btn-primary" id="oneWayBtn" ng-click="changeReturnState(false)"><h5>One way</h5></button>
                                             <button class="btn btn-primary active" id="returnBtn" ng-click="changeReturnState(true)"><h5>Return</h5></button>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group row" ng-class="{ 'has-error' : form.destinationFrom.$invalid && !form.destinationFrom.$pristine }">
                                         <label class="col-sm-3 control-label" ><h4>Flying from</h4></label>
                                         <div class="col-sm-9">
                                             <input
+                                                    name="destinationFrom"
                                                     type="text"
                                                     ng-model="reservation.destinationFrom"
                                                     placeholder="Choose starting point, or select on the map"
@@ -34,13 +35,16 @@
                                                     typeahead-min-length="0"
                                                     id="destinationFromInput"
                                                     typeahead-on-select="changeMap(0)"
-                                                    ng-blur="changeMap(0)">
+                                                    ng-blur="changeMap(0)"
+                                                    required>
+                                            <p ng-show="form.destinationFrom.$invalid && !form.destinationFrom.$pristine" class="help-block">Select departure destination.</p>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group row"  ng-class="{ 'has-error' : form.destinationTo.$invalid && !form.destinationTo.$pristine }">
                                         <label class="col-sm-3 control-label"><h4>Flying to</h4></label>
                                         <div class="col-sm-9">
                                             <input
+                                                    name="destinationTo"
                                                     type="text"
                                                     ng-model="reservation.destinationTo"
                                                     placeholder="Choose destinatin, or select on the map"
@@ -49,25 +53,28 @@
                                                     typeahead-show-hint="true"
                                                     typeahead-min-length="0"
                                                     typeahead-on-select="changeMap(1)"
-                                                    ng-blur="changeMap(1)">
+                                                    ng-blur="changeMap(1)"
+                                                    required>
+                                            <p ng-show="form.destinationTo.$invalid && !form.destinationTo.$pristine" class="help-block">Select return destination.</p>
+
                                         </div>
                                     </div>
 
 
                                     <div class="form-group row">
                                         <div class="col-md-5">
-                                            <h4> Departure</h4>
+                                            <h4 control-label> Departure</h4>
                                             <md-content>
                                                 <md-datepicker ng-model="reservation.departure" md-placeholder="Enter date" ng-change="setMinReturn()"
-                                                               md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                                                               md-min-date="minDate" md-max-date="maxDate" ng-required="true"></md-datepicker>
                                             </md-content>
                                         </div>
-                                        <div class="col-md-5" ng-show="reservation.isReturn">
+                                        <div class="col-md-5" ng-show="reservation.isReturn" >
                                             <h4> Return  </h4>
 
                                             <md-content>
                                                 <md-datepicker ng-model="reservation.return" md-placeholder="Enter date"
-                                                               md-min-date="minDateReturn" md-max-date="maxDate"></md-datepicker>
+                                                               md-min-date="minDateReturn" md-max-date="maxDate" ng-required="reservation.isReturn"></md-datepicker>
                                             </md-content>
                                         </div>
                                         <div class="col-md-2">
@@ -85,7 +92,7 @@
                                         <div class="col-md-6">
                                         </div>
                                         <div class="col-md-6 text-right">
-                                            <button type="submit" ng-click="searchTickets()" class="btn search "><h5>Search</h5></button>
+                                            <button type="submit" ng-click="searchTickets()" class="btn search"  ng-disabled="form.$invalid"><h5>Search</h5></button>
                                         </div>
                                     </div>
                                 </form>
