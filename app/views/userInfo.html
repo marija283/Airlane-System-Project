@@ -22,21 +22,23 @@
         <div class="col-md-8 ">
             <div class="well">
                 <h4> <b>Passenger 1</b></h4>
-                <form>
-                    <div class="row">
-                        <div class="form-group col-md-6">
+                <form name="formUser">
+                    <div class="row" >
+                        <div class="form-group col-md-6" ng-class="{ 'has-error' : formUser.personName.$invalid && !formUser.personName.$pristine }">
                             <label >Name:</label>
-                            <input  class="form-control" ng-model="person.name">
+                            <input  class="form-control" name="personName" ng-model="person.name" required>
+                            <p ng-show="formUser.personName.$invalid && !formUser.personName.$pristine " class="help-block">Enter Your Name.</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" ng-class="{ 'has-error' : formUser.personSurname.$invalid && !formUser.personSurname.$pristine }">
                             <label >Surname:</label>
-                            <input  class="form-control" ng-model="person.surname">
+                            <input  class="form-control" name="personSurname" ng-model="person.surname" required>
+                            <p ng-show="formUser.personSurname.$invalid && !formUser.personSurname.$pristine " class="help-block">Enter Your Surname.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-3 ">
+                        <div class="form-group col-md-3 " ng-class="{ 'has-error' : formUser.personMonth.$invalid && !formUser.personMonth.$pristine }">
                             <label>Date of birth:</label>
-                            <select class="form-control" ng-model="person.month">
+                            <select class="form-control" ng-model="person.month" name="personMonth" required>
                                 <option value="1">January</option>
                                 <option value="2">Febuary</option>
                                 <option value="3">March</option>
@@ -50,10 +52,11 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
+                            <p ng-show="formUser.personMonth.$invalid && !formUser.personMonth.$pristine " class="help-block">Enter your Month.</p>
                         </div>
-                        <div class="form-group col-md-2 " >
+                        <div class="form-group col-md-2 " ng-class="{ 'has-error' : formUser.personDay.$invalid && !formUser.personDay.$pristine }">
                             <label>&nbsp; </label>
-                            <select class="form-control"  ng-model="person.day">
+                            <select class="form-control"  name="personDay" ng-model="person.day" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -86,10 +89,11 @@
                                 <option value="30">30</option>
                                 <option value="31">31</option>
                             </select>
+                            <p ng-show="formUser.personDay.$invalid && !formUser.personDay.$pristine " class="help-block">Enter your Day.</p>
                         </div>
-                        <div class="form-group col-md-3 ">
+                        <div class="form-group col-md-3 " ng-class="{ 'has-error' : formUser.personYear.$invalid && !formUser.personYear.$pristine }">
                             <label>&nbsp; </label>
-                            <select class="form-control"  ng-model="person.year">
+                            <select class="form-control"  ng-model="person.year" name="personYear" required>
                                 <option value="2011">2011</option>
                                 <option value="2010">2010</option>
                                 <option value="2009">2009</option>
@@ -144,13 +148,17 @@
                                 <option value="1960">1960</option>
                                 <option value="1959">1959</option>
                             </select>
+                            <p ng-show="formUser.personYear.$invalid && !formUser.personYear.$pristine " class="help-block">Enter your Year.</p>
                         </div>
-                        <div class="form-group col-md-4">
+
+
+                        <div class="form-group col-md-4" ng-class="{ 'has-error' : formUser.personGender.$invalid && !formUser.personGender.$pristine }">
                             <label>Gender:</label>
-                            <select class="form-control" ng-model="person.gender">
+                            <select class="form-control" ng-model="person.gender" name="personGender" required>
                                 <option value="MALE" >Male </option>
                                 <option value="FEMALE" >Female</option>
                             </select>
+                            <p ng-show="formUser.personYear.$invalid && !formUser.personYear.$pristine " class="help-block">Enter your Gender.</p>
                         </div>
                     </div><!--end row-->
 
@@ -296,48 +304,60 @@
             </div> <!--end passenger 2 info-->
 
 
+
             <div class="well">
                 <h4><b>Contact details</b></h4>
-                <form>
+                <form name="formUserDet">
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" ng-class="{ 'has-error' : formUserDet.personEmail.$invalid && !formUserDet.personEmail.$pristine }">
                             <label >Email:</label>
-                            <input type="email" class="form-control" ng-model="person.email">
+                            <input type="email" class="form-control" ng-model="person.email" name="personEmail" required>
+                            <p ng-show="formUserDet.personEmail.$invalid && !formUserDet.personEmail.$pristine " class="help-block">Enter your Email.</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" ng-class="{ 'has-error' : formUserDet.personEmail2.$invalid && !formUserDet.personEmail2.$pristine }">
                             <label >Confirm email:</label>
-                            <input type="email" class="form-control" >
+                            <input type="email" class="form-control" name="personEmail2" required >
+                            <p ng-show="formUserDet.personEmail2.$invalid && !formUserDet.personEmail2.$pristine " class="help-block">Enter your Email secondTime.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-7  col-xs-7">
+                        <div class="form-group col-md-7  col-xs-7" ng-class="{ 'has-error' : formUserDet.personAdress.$invalid && !formUserDet.personAdress.$pristine }">
                             <label >Address:</label>
-                            <input  class="form-control" ng-model="person.address">
+                            <input  class="form-control" ng-model="person.address" name="personAdress" required>
+                            <p ng-show="formUserDet.personAdress.$invalid && !formUserDet.personAdress.$pristine " class="help-block">Enter your Address.</p>
                         </div>
-                        <div class="form-group col-md-4 col-xs-5 ">
+                        <div class="form-group col-md-4 col-xs-5 " ng-class="{ 'has-error' : formUserDet.personCity.$invalid && !formUserDet.personCity.$pristine }">
                             <label >City:</label>
-                            <input  class="form-control" ng-model="person.city">
+                            <input  class="form-control" ng-model="person.city" name="personCity" required>
+                            <p ng-show="formUserDet.personCity.$invalid && !formUserDet.personCity.$pristine " class="help-block">Enter your City.</p>
+
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-2 col-xs-4 col-sm-4">
+                        <div class="form-group col-md-2 col-xs-4 col-sm-4" ng-class="{ 'has-error' : formUserDet.personPostcode.$invalid && !formUserDet.personPostcode.$pristine }">
                             <label >Postcode:</label>
-                            <input  class="form-control" ng-model="person.postcode">
+                            <input  class="form-control" ng-model="person.postcode" name="personPostcode" required>
+                            <p ng-show="formUserDet.personPostcode.$invalid && !formUserDet.personPostcode.$pristine " class="help-block">Enter Postocode.</p>
+
                         </div>
-                        <div class="form-group col-md-5 col-xs-8 col-sm-8">
+                        <div class="form-group col-md-5 col-xs-8 col-sm-8" ng-class="{ 'has-error' : formUserDet.personCountry.$invalid && !formUserDet.personCountry.$pristine }">
                             <label >Country:</label>
-                            <input  class="form-control" ng-model="person.country">
+                            <input  class="form-control" ng-model="person.country" name="personCountry" required>
+                            <p ng-show="formUserDet.personCountry.$invalid && !formUserDet.personCountry.$pristine " class="help-block">Enter your Country.</p>
+
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" ng-class="{ 'has-error' : formUserDet.personPhone.$invalid && !formUserDet.personPhone.$pristine }">
                             <label >Phone number:</label>
-                            <input  class="form-control" ng-model="person.phone">
+                            <input  class="form-control" ng-model="person.phone" name="personPhone" required>
+                            <p ng-show="formUserDet.personPhone.$invalid && !formUserDet.personPhone.$pristine " class="help-block">Enter yout Phone.</p>
+
                         </div>
                     </div>
 
                 </form>
             </div><!--end Contact details-->
             <div class="text-right">
-            <button type="submit" ng-click="continuePaymentBtn()" class="btn btn-success" ui-sref="payment"><h5>Countinue</h5></button>
+            <button type="submit" ng-click="continuePaymentBtn()" class="btn btn-success" ui-sref="payment" ng-disabled="formUser.$invalid || formUserDet.$invalid"><h5>Countinue</h5></button>
             </div>
         </div>
 

@@ -23,8 +23,9 @@
                     </h4>
 
                 </div>
+
                 <div class="panel-body">
-                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                    <form role="form" id="payment-form" name="formPayment" method="POST" action="javascript:void(0);">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -53,9 +54,12 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group"  ng-class="{ 'has-error' : formPayment.cardNumber.$invalid && !formUserDet.cardNumber.$pristine }">
                                     <label for="cardNumber"> Card number</label>
                                     <div class="input-group">
                                         <input
@@ -67,15 +71,17 @@
                                                 placeholder="Valid Card Number"
                                                 autocomplete="cc-number"
                                                 required autofocus
+                                                name="cardNumber"
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
+                                    <p ng-show="formPayment.cardNumber.$invalid && !formPayment.cardNumber.$pristine " class="help-block">Enter your Card Number.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardExpiry.$invalid && !formUserDet.cardExpiry.$pristine }">
                                     <label for="cardExpiry"><span class="hidden-xs">Expiration</span><span class="visible-xs-inline">EXP</span> date</label>
                                     <input
                                             type="tel"
@@ -86,11 +92,13 @@
                                             placeholder="MM / YY"
                                             autocomplete="cc-exp"
                                             required
+                                            name="cardExpiry"
                                     />
+                                    <p ng-show="formPayment.cardExpiry.$invalid && !formPayment.cardExpiry.$pristine " class="help-block">Enter your Expiry Date.</p>
                                 </div>
                             </div>
                             <div class="col-xs-4 col-md-3 ">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardCVC.$invalid && !formUserDet.cardCVC.$pristine }">
                                     <label for="cardCVC">CV code</label>
                                     <input
                                             type="tel"
@@ -101,7 +109,9 @@
                                             placeholder="CVC"
                                             autocomplete="cc-csc"
                                             required
+                                            name="cardCVC"
                                     />
+                                    <p ng-show="formPayment.cardCVC.$invalid && !formPayment.cardCVC.$pristine " class="help-block">Enter your card CVC.</p>
                                 </div>
                             </div>
                             <div class="col-xs-1 col-md-1 ">
@@ -113,21 +123,23 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardHolderName.$invalid && !formUserDet.cardHolderName.$pristine }">
                                     <label>Cardholder name</label>
-                                    <input type="text" class="form-control" placeholder="First name" ng-model="person.cardHolderName"/>
+                                    <input type="text" class="form-control" placeholder="First name" ng-model="person.cardHolderName" name="cardHolderName" required/>
+                                    <p ng-show="formPayment.cardHolderName.$invalid && !formPayment.cardHolderName.$pristine " class="help-block">Enter Cardholder Name.</p>
                                 </div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardHolderSur.$invalid && !formUserDet.cardHolderSur.$pristine }">
                                     <label >&nbsp;</label>
-                                    <input type="text" class="form-control" placeholder="Last name" ng-model="person.cardHolderSurname"/>
+                                    <input type="text" class="form-control" placeholder="Last name" ng-model="person.cardHolderSurname" name="cardHolderSur" required/>
+                                    <p ng-show="formPayment.cardHolderSur.$invalid && !formPayment.cardHolderSur.$pristine " class="help-block">Enter Cardholder Surname.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button ui-sref="confirmation" class="btn-success btn  btn-lg btn-block" type="button" ng-click="continueConfirmBtn()">
+                                <button ui-sref="confirmation" class="btn-success btn  btn-lg btn-block" type="button" ng-disabled="formPayment.$invalid" ng-click="continueConfirmBtn()">
                                     Buy tickets
                                 </button>
                             </div>
