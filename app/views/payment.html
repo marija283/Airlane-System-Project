@@ -59,7 +59,7 @@
 
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <div class="form-group"  ng-class="{ 'has-error' : formPayment.cardNumber.$invalid && !formUserDet.cardNumber.$pristine }">
+                                <div class="form-group"  ng-class="{ 'has-error' : formPayment.cardNumber.$invalid && !formPayment.cardNumber.$pristine }">
                                     <label for="cardNumber"> Card number</label>
                                     <div class="input-group">
                                         <input
@@ -81,7 +81,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-md-6">
-                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardExpiry.$invalid && !formUserDet.cardExpiry.$pristine }">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardExpiry.$invalid && !formPayment.cardExpiry.$pristine }">
                                     <label for="cardExpiry"><span class="hidden-xs">Expiration</span><span class="visible-xs-inline">EXP</span> date</label>
                                     <input
                                             type="tel"
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-4 col-md-3 ">
-                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardCVC.$invalid && !formUserDet.cardCVC.$pristine }">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardCVC.$invalid && !formPayment.cardCVC.$pristine }">
                                     <label for="cardCVC">CV code</label>
                                     <input
                                             type="tel"
@@ -123,19 +123,20 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardHolderName.$invalid && !formUserDet.cardHolderName.$pristine }">
+                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardHolderName.$invalid && !formPayment.cardHolderName.$pristine }">
                                     <label>Cardholder name</label>
                                     <input type="text" class="form-control" placeholder="First name" ng-model="person.cardHolderName" name="cardHolderName" required/>
                                     <p ng-show="formPayment.cardHolderName.$invalid && !formPayment.cardHolderName.$pristine " class="help-block">Enter Cardholder Name.</p>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="form-group" ng-class="{ 'has-error' : formPayment.cardHolderSur.$invalid && !formUserDet.cardHolderSur.$pristine }">
-                                    <label >&nbsp;</label>
-                                    <input type="text" class="form-control" placeholder="Last name" ng-model="person.cardHolderSurname" name="cardHolderSur" required/>
-                                    <p ng-show="formPayment.cardHolderSur.$invalid && !formPayment.cardHolderSur.$pristine " class="help-block">Enter Cardholder Surname.</p>
-                                </div>
+                            <div class="form-group col-xs-6" ng-class="{ 'has-error' : formPayment.cardHolderSur.$invalid && !formPayment.cardHolderSur.$pristine }">
+                                <label >&nbsp;</label>
+                                <input type="text" class="form-control" placeholder="Last name" ng-model="person.cardHolderSurname" name="cardHolderSur" required/>
+                                <p ng-show="formPayment.cardHolderSur.$invalid && !formPayment.cardHolderSur.$pristine " class="help-block">Enter Cardholder Surname.</p>
                             </div>
+
+
+
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
